@@ -12,6 +12,9 @@ class Auth extends BaseController
     public function register()
     {
         return view('auth/register');
+
+        $validation = \Config\Services::validation();
+        $validation->setRules(['fullname' => 'required']);
     }
 
     public function forgotPassword()
