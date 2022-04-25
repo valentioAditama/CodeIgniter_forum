@@ -6,7 +6,7 @@
   <title> Forgot Password </title>
   <link rel='stylesheet'
     href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta2/css/bootstrap.min.css'>
-  <link rel="stylesheet" href="Assets/style.css">
+    <link rel="icon" href="<?=base_url()?>/chat.ico" type="image/gif">
 </head>
 <body>
   <!-- partial:index.partial.html -->
