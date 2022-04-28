@@ -7,8 +7,5 @@ use CodeIgniter\Model;
 class AuthModel extends Model
 {
     protected $table = 'users';
-    protected $primaryKey = 'id';
-
-    protected $useAutoIncrement = true;
-    protected $allowedFields = ['fullname', 'email', 'username', 'password'];
+    protected $allowedFields =['fullname', 'email', 'username', 'password', 'image_profile', 'created_at'];
 }

@@ -31,9 +31,14 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Auth::index');
-$routes->get('/register', 'Auth::register');
-$routes->get('/forgotPassword', 'Auth::forgotPassword');
+$routes->get('/', 'AuthController::login');
+$routes->post('/login/process', 'AuthController::loginStore');
+$routes->get('/register', 'AuthController::register');
+$routes->post('/register/process', 'AuthController::registerStore');
+$routes->get('/forgotPassword', 'AuthController::forgotPassword');
+$routes->get('/logout', 'AuthController::logout');
+
+$routes->get('/home', 'HomeController::index');
 
 /*
  * --------------------------------------------------------------------

@@ -6,7 +6,7 @@
   <title>Daftar</title>
   <link rel='stylesheet'
     href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta2/css/bootstrap.min.css'>
-    <link rel="icon" href="<?=base_url()?>/chat.ico" type="image/gif">
+  <link rel="icon" href="<?=base_url()?>/chat.ico" type="image/gif">
 
 </head>
 
@@ -19,22 +19,32 @@
         <div class="text-center mb-5 text-dark">Ayo bangun koneksimu bersama anggota lainnya!</div>
         <div class="card my-5">
 
-          <form method="post" action="/signup" class="card-body cardbody-color p-lg-5">
 
+          <?php if(isset($validation)): ?>
+          <div class="p-3">
+            <div class="alert alert-danger" role="alert">
+              <?= $validation->listError() ?>
+            </div>
+          </div>
+          <?php endif; ?>
+
+          <form method="post" action="<?php echo base_url() ?>/register/process"
+            class="card-body cardbody-color p-lg-5">
             <div class="text-center">
               <img src="<?php echo base_url('assets/442008570_ARTIST_AVATAR_3D_400px.gif')?>"
                 class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3" width="200px" alt="profile">
             </div>
 
             <div class="mb-3">
-              <input type="text" class="form-control" id="fullname" name="fullname" aria-describedby="emailHelp"
-                placeholder="Fullname" required>
+              <input type="text" class="form-control" id="fullname" name="fullname"
+                aria-describedby="emailHelp" placeholder="Fullname" required>
             </div>
             <div class="mb-3">
               <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
             </div>
             <div class="mb-3">
-              <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
+              <input type="text" class="form-control" id="username" name="username"
+                placeholder="Username" required>
             </div>
             <div class="mb-3">
               <input type="password" class="form-control" id="password" name="password" placeholder="password" required>

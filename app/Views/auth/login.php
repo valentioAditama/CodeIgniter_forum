@@ -18,7 +18,7 @@
         <h2 class="text-center text-dark mt-5">Login </h2>
         <div class="text-center mb-5 text-dark">Ayo bangun koneksimu bersama anggota lainnya!</div>
         <div class="card my-5">
-          <form action="/login" method="post" class="card-body cardbody-color p-lg-5">
+          <form action="<?php base_url()?>/login/process" method="POST" class="card-body cardbody-color p-lg-5">
             <div class="text-center">
               <img src="<?php echo base_url('assets/442008571_ARTIST_AVATAR_3D_400px.gif') ?>"
                 class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3" width="200px" alt="profile">
