@@ -33,8 +33,7 @@ class AuthController extends BaseController
         
         // ambil data user di database yang emailnya sama
         $user  = $this->userModel->where('email', $data['email'])->first();
-        $fullname = $this->userModel->where('fullname');
-
+        
         // cek email jika ada maka di lanjutkan ke home
         if ($user) {
             // cek password users 

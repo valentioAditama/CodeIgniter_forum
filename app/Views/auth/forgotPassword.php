@@ -18,7 +18,7 @@
         <div class="card my-5">
           <form class="card-body cardbody-color p-lg-5">
             <div class="text-center">
-              <img src="<?php echo base_url('Assets/442008570_ARTIST_AVATAR_3D_400px.gif')?>"
+              <img src="<?php echo base_url('assets/442008570_ARTIST_AVATAR_3D_400px.gif')?>"
                 class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3" width="200px" alt="profile">
             </div>
             <div class="mb-3">

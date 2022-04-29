@@ -110,7 +110,7 @@
       <div class="p-3">
         <div class="row">
           <div class="col-md-3 d-flex justify-content-end">
-            <img src="<?php echo base_url('Assets/442008570_ARTIST_AVATAR_3D_400px.gif')?>" height="100"
+            <img src="<?php echo base_url('assets/442008570_ARTIST_AVATAR_3D_400px.gif')?>" height="100"
               class="rounded-circle" alt="">
           </div>
           <div class="col-md-6 d-flex align-items-center">
@@ -157,7 +157,7 @@
             <div class="row">
               <div class="col-md-2">
                 <div class="d-flex justify-content-end">
-                  <img src="<?php echo base_url('Assets/img_avatar.png')?>" height="75" class="rounded-circle" alt="">
+                  <img src="<?php echo base_url('assets/img_avatar.png')?>" height="75" class="rounded-circle" alt="">
                 </div>
               </div>
               <div class="col-md-8">
@@ -194,7 +194,7 @@
               <div class="col-md-12 ">
                 <center>
                   <img
-                    src="<?php echo base_url('/Assets/2022_1500_motogp_02_ina_mgp_day04_race_edit_hs.video_list_2x.jpg')?>"
+                    src="<?php echo base_url('/assets/2022_1500_motogp_02_ina_mgp_day04_race_edit_hs.video_list_2x.jpg')?>"
                     class="img-fluid hover-shadow" alt="">
                 </center>
                 <div class="row">
@@ -230,7 +230,7 @@
               <div class="row">
                 <div class="col-md-2">
                   <div class="d-flex justify-content-end">
-                    <img src="<?php echo base_url('/Assets/img_avatar.png')?>" height="75" class="rounded-circle"
+                    <img src="<?php echo base_url('/assets/img_avatar.png')?>" height="75" class="rounded-circle"
                       alt="">
                   </div>
                 </div>
