@@ -38,7 +38,8 @@ $routes->post('/register/process', 'AuthController::registerStore');
 $routes->get('/forgotPassword', 'AuthController::forgotPassword');
 $routes->get('/logout', 'AuthController::logout');
 
-$routes->get('/home', 'HomeController::index');
+$routes->get('/home', 'MainController::index');
+$routes->get('/profile', 'MainController::profile');
 
 /*
  * --------------------------------------------------------------------
