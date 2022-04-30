@@ -38,7 +38,7 @@ class AuthController extends BaseController
                 session()->set([
                     'email' => $dataUser['email'],
                     'fullname' => $dataUser['fullname'],
-                    'Loggedin' => TRUE
+                    'Loggedin' => TRUE 
                 ]);
                 return redirect()->to('/home');
             } else{
