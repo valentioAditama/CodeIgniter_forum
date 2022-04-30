@@ -7,7 +7,6 @@ use App\models\AuthModel;
 
 class AuthController extends BaseController
 {
-
     public function __construct()
     {
         // membuat user model untuk mengkoneksi ke database
@@ -28,32 +27,28 @@ class AuthController extends BaseController
 
     public function loginStore()
     {
-        // ambil data dari form
-        $data = $this->request->getPost();
-        
-        // ambil data user di database yang emailnya sama
-        $user  = $this->userModel->where('email', $data['email'])->first();
-        
-        // cek email jika ada maka di lanjutkan ke home
-        if ($user) {
-            // cek password users 
-            // jika ada maka di lanjutkan ke halaman home jika tidak maka akan di tetapkan di login page
-            if(password_verify($data['password'], $user['password'])){
-                $sessionLogin = [
-                    'Loggedin' => TRUE,
-                    'email ' => $user['email']
-                ];
-                $this->session->set($sessionLogin);
+        $users = new AuthModel();
+        $email = $this->request->getVar('email');
+        $password = $this->request->getVar('password');
+        $dataUser = $users->where([
+            'email' => $email, 
+        ])->first();
+        if($dataUser){
+            if (password_verify($password, $dataUser['password'])){
+                session()->set([
+                    'email' => $dataUser['email'],
+                    'fullname' => $dataUser['fullname'],
+                    'Loggedin' => TRUE
+                ]);
                 return redirect()->to('/home');
-            }else{
-                return redirect()->to('/');
+            } else{
+                session()->setFlashdata('error', 'username or password salah!');
+                return redirect()->back();
             }
-        } else {
-            // jika username tidak ditemukan maka akan di tetapkan di halaman login
-            session()->setFlashdata('email', 'email dan password anda salah!');
-            return redirect()->to('/');
+        }else{
+            session()->setFlashdata('error', 'username or password salah!');
+            return redirect()->back();
         }
-        
     }
 
     public function register()
