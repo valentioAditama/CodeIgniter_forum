@@ -6,12 +6,7 @@ use CodeIgniter\Model;
 
 class usersModel extends Model
 {
-    public function updateUsers($data, $id)
-    {
-        $query = $this->table('users')->update($data, array('id' => $id));
-        return $query;
-    }
-    
     protected $table = 'users';
+    protected $primaryKey = 'id';
     protected $allowedFields =['id', 'fullname', 'email', 'username', 'password', 'image_profile', 'created_at'];
 }

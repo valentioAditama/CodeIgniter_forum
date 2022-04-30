@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <!--  This file has been downloaded from bootdey.com @bootdey on twitter -->
     <!--  All snippets are MIT license http://bootdey.com/license -->
-    <title>edit profile account</title>
+    <title>Edit Profile</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
     <!-- Google Fonts -->
@@ -134,8 +134,7 @@
                         <form>
                             <!-- Form Group (username)-->
                             <div class="mb-3">
-                                <label class="small mb-1" for="inputUsername">Username (how your name will appear to
-                                    other users on the site)</label>
+                                <label class="small mb-1" for="inputUsername">Username</label>
                                 <input class="form-control" id="inputUsername" type="text"
                                 placeholder="Enter your username" value="<?php echo session()->get('user') ?>">
                             </div>

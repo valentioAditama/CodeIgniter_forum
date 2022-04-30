@@ -39,7 +39,7 @@ $routes->get('/forgotPassword', 'AuthController::forgotPassword');
 $routes->get('/logout', 'AuthController::logout');
 
 $routes->get('/home', 'MainController::index');
-$routes->get('/profile', 'MainController::profile');
+$routes->get('/profile(:any)', 'MainController::profile/$1');
 
 /*
  * --------------------------------------------------------------------
