@@ -19,35 +19,35 @@ class MainController extends BaseController
             return redirect()->to('/');
         }
 
-        return view('main/home');
+        echo view('main/home');
     }
 
-    public function profile()
+    public function profile($id)
     {
         if(!$this->session->has('Loggedin')){
             return redirect()->to('/');
         }
 
-        // menampilkan halaman Profile 
-        return view('main/profile');
-        
-    }
+        $dataUsers = new usersModel();
+        $data['users'] = $dataUsers->where('fullname', $id)->first();
 
-    //membuat untuk memanggil data read dari database untuk melihat semua informasi user yang berada di session ini
-    public function UpdateUsers()
-    {
-        $users = new usersModel();
-        $id = $this->request->getPost('id');
-        $data = array(
-            'fullname'  => $this->request->getPost('fullname'),
-            'email'  => $this->request->getPost('email'),
-            'username'  => $this->request->getPost('username'),
-            // 'password'  => $this->request->getPost('password')
-        );
-        $users->updateUsers($data, $id);
-        return redirect()->to('/profile');
-        // menampilkan halaman Profile 
-        return view('main/profile', $data);
-        
+        $validation = \config\Services::validation();
+        $validation->setRules([
+            'fullname' => 'required',
+            'id' => 'required',
+        ]);
+
+        $IsValidData = $validation->withRequest($this->request)->run();
+        // jika data valid maka simpan ke database
+        if($IsValidData){
+            $dataUsers->update($id, [
+                "fullname" => $this->request->getPost('fullname'),
+                "email" => $this->request->getPost('email'),
+                "username" => $this->request->getPost('username')
+            ]);
+            return redirect('home/profile');
+        }
+
+        echo view('main/profile', $data);
     }
 }

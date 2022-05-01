@@ -131,18 +131,19 @@
                 <div class="card mb-4">
                     <div class="card-header">Account Details</div>
                     <div class="card-body">
-                        <form>
+                        <form action="" method="POST">
+                            <input class="form-control" type="hidden" name="fullname" value="<?php echo $users['fullname'] ?>">
                             <!-- Form Group (username)-->
                             <div class="mb-3">
                                 <label class="small mb-1" for="inputUsername">Username</label>
                                 <input class="form-control" id="inputUsername" type="text"
-                                placeholder="Enter your username" value="<?php echo session()->get('user') ?>">
+                                placeholder="Enter your username" name="username" value="<?php echo $users['username'] ?>">
                             </div>
                             <!-- Form Row-->
                             <div class="mb-3">
                                 <label class="small mb-1" for="inputUsername">Fullname</label>
                                 <input class="form-control" id="inputUsername" type="text"
-                                placeholder="Enter your username" value="<?php echo session()->get('fullname') ?>">
+                                placeholder="Enter your Fullname" name="fullname" value="<?php echo $users['fullname'] ?>">
                             </div>
                             <!-- Form Row        -->
                             <div class="row gx-3 mb-3">
@@ -163,7 +164,7 @@
                             <div class="mb-3">
                                 <label class="small mb-1" for="inputEmailAddress">Email address</label>
                                 <input class="form-control" id="inputEmailAddress" type="email"
-                                    placeholder="Enter your email address" value="<%= email %>">
+                                    placeholder="Enter your email address" name="email" value="<?php echo $users['email'] ?>">
                             </div>
                             <!-- Form Row-->
                             <div class="row gx-3 mb-3">
@@ -181,7 +182,7 @@
                                 </div>
                             </div>
                             <!-- Save changes button-->
-                            <button class="btn btn-primary" type="button">Save changes</button>
+                            <button class="btn btn-primary" type="submit">Save changes</button>
                         </form>
                     </div>
                 </div>
