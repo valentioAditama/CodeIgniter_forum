@@ -45,17 +45,23 @@ class ProfileController extends BaseController
         }
     }
 
-    public function profile_update(){
-        if (!$this->session->has('Loggedin')) {
+    public function update($id){
+        if(!$this->session->has('Loggedin')){
             return redirect()->to('/');
-        }
+        };
 
-        $dataUsers = new usersModel();
-        $dataUsers->update([
+        // $data = $this->request->getPost();
+        // unset($data['_method']);
+
+        $users = new usersModel();
+        $users->update([
             'fullname' => $this->request->getVar('fullname'),
             'email' => $this->request->getVar('email'),
             'username' => $this->request->getVar('username'),
         ]);
-        return redirect()->to('/home');
+
+        // $this->userModel->table('users')->where(['id' => $id])->update($data);
+        // session()->setFlashdata('error', 'username or password salah!');
+        // return view('main/home');
     }
 }

@@ -84,7 +84,8 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
                             <li>
-                                <a class="dropdown-item" href="<?php base_url('home/profile/'. session()->get("fullname")) ?>">My profile</a>
+                                <a class="dropdown-item"
+                                    href="<?php base_url('home/profile/'. session()->get("fullname")) ?>">My profile</a>
                             </li>
                             <!-- <li>
                                 <a class="dropdown-item" href="account_settings.html">Settings</a>
@@ -96,13 +97,13 @@
                     </div>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                          <span class="navbar-text p-2">
-                            Hi, <?php echo session()->get('fullname'); ?>
-                          </span>
+                            <span class="navbar-text p-2">
+                                Hi, <?php echo session()->get('fullname'); ?>
+                            </span>
                         </ul>
-                      </div>
+                    </div>
                 </div>
-                
+
                 <!-- Right elements -->
             </div>
             <!-- Container wrapper -->
@@ -128,22 +129,28 @@
                 </div>
             </div>
             <div class="col-xl-8">
+                <?php if(session()->getFlashdata('success')): ?>
+                <div class="alert alert-success" role="alert">
+                    <?php echo session()->getFlashdata('success'); ?>
+                </div>
+                <?php endif; ?>
                 <!-- Account details card-->
                 <div class="card mb-4">
                     <div class="card-header">Account Details</div>
                     <div class="card-body">
-                        <form action="<?php echo base_url('users/update') ?>" method="POST">
+                        <form action="<?php echo base_url('profile/'.$users->id)?>" method="POST">
+                            <!-- <input type="hidden" name="_method" value="PUT"> -->
                             <!-- Form Group (username)-->
                             <div class="mb-3">
                                 <label class="small mb-1" for="inputUsername">Username</label>
                                 <input class="form-control" id="inputUsername" type="text"
-                                placeholder="Enter your username" name="username" value="<?= $users->username; ?>">
+                                    placeholder="Enter your username" name="username" value="<?= $users->username; ?>">
                             </div>
                             <!-- Form Row-->
                             <div class="mb-3">
                                 <label class="small mb-1" for="inputUsername">Fullname</label>
                                 <input class="form-control" id="inputUsername" type="text"
-                                placeholder="Enter your Fullname" name="fullname" value="<?= $users->fullname; ?>">
+                                    placeholder="Enter your Fullname" name="fullname" value="<?= $users->fullname; ?>">
                             </div>
                             <!-- Form Row        -->
                             <!-- <div class="row gx-3 mb-3">
