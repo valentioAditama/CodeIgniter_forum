@@ -6,7 +6,7 @@
   <title>Login</title>
   <link rel='stylesheet'
     href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta2/css/bootstrap.min.css'>
-    <link rel="icon" href="<?=base_url()?>/chat.ico" type="image/gif">
+  <link rel="icon" href="<?=base_url()?>/chat.ico" type="image/gif">
 
 </head>
 
@@ -23,6 +23,13 @@
               <img src="<?php echo base_url('assets/442008571_ARTIST_AVATAR_3D_400px.gif') ?>"
                 class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3" width="200px" alt="profile">
             </div>
+            <?php if(session()->getFlashdata('error')) :?>
+            <div class="mb-3">
+              <div class="alert alert-danger" role="alert">
+                <?php echo session()->getFlashdata('error'); ?>
+              </div>
+            </div>
+            <?php endif; ?>
             <div class="mb-3">
               <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"
                 placeholder="Email">

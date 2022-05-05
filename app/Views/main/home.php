@@ -80,7 +80,7 @@
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
               <li>
-                <a class="dropdown-item" href="<?php echo base_url('home/profile/'. session()->get("fullname")) ?>">My profile</a>
+                  <a class="dropdown-item" href="<?php echo base_url('profile/edit/'. session()->get('id')) ?>">My profile</a>
               </li>
               <!-- <li>
                 <a class="dropdown-item" href="account_settings.html">Settings</a>

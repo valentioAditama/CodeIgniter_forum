@@ -36,6 +36,7 @@ class AuthController extends BaseController
         if($dataUser){
             if (password_verify($password, $dataUser['password'])){
                 session()->set([
+                    'id' => $dataUser['id'],
                     'fullname' => $dataUser['fullname'],
                     'email' => $dataUser['email'],
                     'user' => $dataUser['username'],

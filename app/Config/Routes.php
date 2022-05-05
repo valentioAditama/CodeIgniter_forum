@@ -31,11 +31,11 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->group("home", function($routes){
-    $routes->add('profile/(:any)/', 'MainController::profile/$1');
-});
 
-$routes->get('/home', 'MainController::index');
+$routes->get('profile/edit/(:segment)', 'ProfileController::profile/$1');
+// $routes->post('profile/', 'ProfileController::profile_update/$1');
+
+$routes->get('/home', 'ProfileController::index');
 
 $routes->get('/logout', 'AuthController::logout');
 $routes->get('/', 'AuthController::login');
