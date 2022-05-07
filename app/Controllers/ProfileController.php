@@ -5,6 +5,8 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Database\Migrations\Users;
 use App\Models\usersModel;
+use CodeIgniter\Files\File;
+use CodeIgniter\HTTP\Request;
 
 class ProfileController extends BaseController
 {
@@ -47,21 +49,62 @@ class ProfileController extends BaseController
 
     public function update($id){
         if(!$this->session->has('Loggedin')){
-            return redirect()->to('/');
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
         };
 
-        // $data = $this->request->getPost();
-        // unset($data['_method']);
+        $db = \Config\Database::connect();
 
         $users = new usersModel();
-        $users->update([
+        $id = $this->request->getVar('id');
+
+                 $rules = [
+                'image' => [
+                    'label' => 'Gambar',
+                    'rules' => 'uploaded[image]|is_image[image]|max_size[image, 5120]'
+                ],
+            ];
+
+            if($this->validate($rules)){
+                $image = $this->request->getFile('image');
+                $namafile = time() . $image->getClientName();
+                $image->move('assets');
+
+                // $db->table('users')->update([
+                //     'image_profile' => $namafile
+                // ]);
+            }
+
+        $data = [
             'fullname' => $this->request->getVar('fullname'),
             'email' => $this->request->getVar('email'),
             'username' => $this->request->getVar('username'),
-        ]);
+            'image_profile' => $namafile
+        ];
 
-        // $this->userModel->table('users')->where(['id' => $id])->update($data);
-        // session()->setFlashdata('error', 'username or password salah!');
-        // return view('main/home');
+        // $data['image'] = $db->table('users')->get()->getResult();
+        // return view('main/profile', $data);
+        $users->update($id, $data);
+        return redirect()->to('/profile/edit/'. $id)->with('success', 'Data berhasil di update!');
     }
+
+    // public function uploadGambar(){
+    //     if ($this->request->getMethod() === "post") {
+    //         $rules = [
+    //             'image' => [
+    //                 'label' => 'Gambar',
+    //                 'rules' => 'uploaded[image]|is_image[image]|max_size[image, 5120]'
+    //             ],
+    //         ];
+
+    //         if($this->validate($rules)){
+    //             $image = $this->request->getFile('image');
+    //             $image -> move('uploads');
+
+    //             redirect()->back()->with('success', 'Data gambar berhasil di simpan');
+    //         }
+
+    //     }
+        
+    //     return view('main/profile');
+    // }
 }

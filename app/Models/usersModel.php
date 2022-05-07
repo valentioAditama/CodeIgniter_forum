@@ -13,4 +13,9 @@ class usersModel extends Model
         public function getUsers(){
                 return $this->findAll();
         }
+
+        public function simpan_gambar($data){
+                $query = $this->db->table($this->table)->insert($data);
+                return $query;
+        }
 }

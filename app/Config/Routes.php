@@ -33,8 +33,7 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 
 $routes->get('profile/edit/(:any)', 'ProfileController::profile/$1');
-$routes->put('profile/(:any)', 'ProfileController::update/$1');
-// $routes->post('profile/', 'ProfileController::profile_update/$1');
+$routes->put('profile/process/(:any)', 'ProfileController::update/$1');
 
 $routes->get('/home', 'ProfileController::index');
 

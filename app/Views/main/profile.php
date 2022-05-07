@@ -98,7 +98,7 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <span class="navbar-text p-2">
-                                Hi, <?php echo session()->get('fullname'); ?>
+                                Hi, <?php echo $users->fullname ?>
                             </span>
                         </ul>
                     </div>
@@ -116,15 +116,16 @@
             <div class="col-xl-4">
                 <!-- Profile picture card-->
                 <div class="card mb-4 mb-xl-0">
+                <form action="<?php echo site_url('profile/process/'. $users->id)?>" method="POST" enctype="multipart/form-data">
+                            <?php csrf_field() ?>
                     <div class="card-header">Profile Picture</div>
                     <div class="card-body text-center">
-                        <!-- Profile picture image-->
-                        <img class="img-account-profile rounded-circle mb-2"
-                            src="<?php echo base_url('assets/profile-default.gif') ?>" alt="">
-                        <!-- Profile picture help block-->
-                        <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
-                        <!-- Profile picture upload button-->
-                        <button class="btn btn-primary" type="button">Upload new image</button>
+                            <!-- Profile picture image-->
+                            <img class="img-account-profile rounded-circle mb-2"
+                                src="<?php echo base_url('uploads/'.$users->image_profile) ?>" alt="">
+                            <!-- Profile picture help block-->
+                            <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
+                            <input type="file" class="form-control" id="image" name="image" />
                     </div>
                 </div>
             </div>
@@ -138,13 +139,14 @@
                 <div class="card mb-4">
                     <div class="card-header">Account Details</div>
                     <div class="card-body">
-                        <form action="<?php echo base_url('profile/'.$users->id)?>" method="POST">
-                            <!-- <input type="hidden" name="_method" value="PUT"> -->
+                        
+                            <input type="hidden" name="_method" value="PUT">
+                            <input type="hidden" name="id" id="id" value="<?= $users->id ?>">
                             <!-- Form Group (username)-->
                             <div class="mb-3">
-                                <label class="small mb-1" for="inputUsername">Username</label>
-                                <input class="form-control" id="inputUsername" type="text"
-                                    placeholder="Enter your username" name="username" value="<?= $users->username; ?>">
+                                <label class="small mb-1" for="inputUsername">Userame</label>
+                                <input class="form-control" id="username" type="text" placeholder="Enter your Fullname"
+                                    name="username" value="<?= $users->username; ?>">
                             </div>
                             <!-- Form Row-->
                             <div class="mb-3">
