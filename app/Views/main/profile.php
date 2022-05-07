@@ -51,7 +51,7 @@
 
                                 <span class="badge rounded-pill badge-notification bg-danger">99+</span>
                             </a>
-                        </li>
+                        </li> 
                         <li class="nav-item dropdown me-3 me-lg-1">
                             <a class="nav-link dropdown-toggle hidden-arrow" href="notifications.html" role="button"
                                 data-mdb-toggle="dropdown">
