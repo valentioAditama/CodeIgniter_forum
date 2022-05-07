@@ -75,16 +75,16 @@
           <div class="dropdown">
             <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#" id="navbarDropdownMenuAvatar"
               role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-              <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle" height="25"
+              <img src="<?php echo base_url('assets/profile-default.gif') ?>" class="rounded-circle" height="25"
                 alt="Black and White Portrait of a Man" loading="lazy" />
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
               <li>
-                <a class="dropdown-item" href="/profile">My profile</a>
+                  <a class="dropdown-item" href="<?php echo base_url('profile/edit/'. session()->get('id')) ?>">My profile</a>
               </li>
-              <li>
+              <!-- <li>
                 <a class="dropdown-item" href="account_settings.html">Settings</a>
-              </li>
+              </li> -->
               <li>
                 <a class="dropdown-item" href="<?php base_url();?>/logout">Logout</a>
               </li>
@@ -93,7 +93,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <span class="navbar-text p-2">
-                Hi, <?php echo session()->get('fullname'); ?>
+                Hi, <?php echo session()->get('fullname')?>
               </span>
             </ul>
           </div>

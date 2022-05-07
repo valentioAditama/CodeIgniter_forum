@@ -3,14 +3,14 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\models\AuthModel;
+use App\models\usersModel;
 
 class AuthController extends BaseController
 {
     public function __construct()
     {
         // membuat user model untuk mengkoneksi ke database
-        $this->userModel = new AuthModel();
+        $this->userModel = new usersModel();
 
         // men-load validaton
         $this->validation = \Config\Services::validation();
@@ -27,7 +27,7 @@ class AuthController extends BaseController
 
     public function loginStore()
     {
-        $users = new AuthModel();
+        $users = new usersModel();
         $email = $this->request->getVar('email');
         $password = $this->request->getVar('password');
         $dataUser = $users->where([
@@ -36,8 +36,10 @@ class AuthController extends BaseController
         if($dataUser){
             if (password_verify($password, $dataUser['password'])){
                 session()->set([
-                    'email' => $dataUser['email'],
+                    'id' => $dataUser['id'],
                     'fullname' => $dataUser['fullname'],
+                    'email' => $dataUser['email'],
+                    'user' => $dataUser['username'],
                     'Loggedin' => TRUE 
                 ]);
                 return redirect()->to('/home');
@@ -58,7 +60,7 @@ class AuthController extends BaseController
 
     public function registerStore()
     {
-        $Auth = new AuthModel();
+        $Auth = new usersModel();
         $Auth->insert([
             'fullname' => $this->request->getVar('fullname'),
             'email' => $this->request->getVar('email'),
