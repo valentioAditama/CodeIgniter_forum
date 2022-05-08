@@ -121,8 +121,8 @@
                     <div class="card-header">Profile Picture</div>
                     <div class="card-body text-center">
                             <!-- Profile picture image-->
-                            <img class="img-account-profile rounded-circle mb-2"
-                                src="<?php echo base_url('uploads/'.$users->image_profile) ?>" alt="">
+                            <img class="img-account-profile rounded mb-2"
+                             src="<?= base_url('uploads/'.$users->image_profile) ?>" alt="">
                             <!-- Profile picture help block-->
                             <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
                             <input type="file" class="form-control" id="image" name="image" />

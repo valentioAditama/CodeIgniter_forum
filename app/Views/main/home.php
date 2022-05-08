@@ -109,7 +109,7 @@
       <div class="p-3">
         <div class="row">
           <div class="col-md-3 d-flex justify-content-end">
-            <img src="<?php echo base_url('assets/442008570_ARTIST_AVATAR_3D_400px.gif')?>" height="100"
+            <img src="<?php echo base_url('assets/profile-default.gif')?>" height="100"
               class="rounded-circle" alt="">
           </div>
           <div class="col-md-6 d-flex align-items-center">

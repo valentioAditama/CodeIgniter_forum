@@ -40,16 +40,16 @@ class ProfileController extends BaseController
                 $data['users'] = $query->getRow();
                 return view('main/profile', $data);
            }else{
-               throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+            //    throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
            }
         } else{
-            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+            // throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
         }
     }
 
     public function update($id){
         if(!$this->session->has('Loggedin')){
-            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+            // throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
         };
 
         $db = \Config\Database::connect();
@@ -66,8 +66,8 @@ class ProfileController extends BaseController
 
             if($this->validate($rules)){
                 $image = $this->request->getFile('image');
-                $namafile = time() . $image->getClientName();
-                $image->move('assets');
+                $namafile = $image->getClientName();
+                $image->move('uploads');
 
                 // $db->table('users')->update([
                 //     'image_profile' => $namafile

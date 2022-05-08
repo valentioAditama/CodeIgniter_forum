@@ -3,11 +3,11 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\models\usersModel;
+use App\Models\usersModel;
 
 class AuthController extends BaseController
 {
-    public function __construct()
+    public function _construct()
     {
         // membuat user model untuk mengkoneksi ke database
         $this->userModel = new usersModel();
@@ -40,6 +40,7 @@ class AuthController extends BaseController
                     'fullname' => $dataUser['fullname'],
                     'email' => $dataUser['email'],
                     'user' => $dataUser['username'],
+                    'image_profile' =>$dataUser['image_profile'],
                     'Loggedin' => TRUE 
                 ]);
                 return redirect()->to('/home');
