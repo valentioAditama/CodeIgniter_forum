@@ -138,7 +138,7 @@
             <div class="row">
               <div class="col-md-2">
                 <div class="d-flex justify-content-end">
-                  <img src="<?php echo base_url('/assets/img_avatar.png')?>" height="75" class="rounded-circle" alt="">
+                  <img src="<?= base_url('uploads/'.$value->image_profile) ?>" style="height: 80px; width: 80px;" class="rounded" alt="">
                 </div>
               </div>
               <div class="col-md-8">
