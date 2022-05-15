@@ -45,10 +45,10 @@
               <a class="nav-link active" href="home.html">Forum</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="explore.html">Explore</a>
+              <a class="nav-link" href="/explore">Explore</a>
             </li>
             <li class="nav-item dropdown me-3 me-lg-1">
-              <a class="nav-link dropdown-toggle hidden-arrow" href="chat.html" role="button">
+              <a class="nav-link dropdown-toggle hidden-arrow" href="/chat" role="button">
                 <i class="fas fa-comments fa-lg"></i>
                 <span class="badge rounded-pill badge-notification bg-danger">99+</span>
               </a>
@@ -133,12 +133,17 @@
           vel animi id.
         </div>
         <div class="col-md-6 shadow-5 rounded-4">
+        <?php if(session()->getFlashdata('success')): ?>
+                <div class="alert alert-success" role="alert">
+                    <?php echo session()->getFlashdata('success'); ?>
+                </div>
+                <?php endif; ?>
           <?php foreach ($users as $key => $value) : ?>
             <div class="p-3 shadow-3-strong rounded-5 mb-3">
             <div class="row">
               <div class="col-md-2">
                 <div class="d-flex justify-content-end">
-                  <img src="<?= base_url('uploads/'.$value->image_profile) ?>" style="height: 80px; width: 80px;" class="rounded" alt="">
+                  <img src="<?= base_url('uploads/'.$value->image_profile) ?>" style="height: 90px; width: 80px;" class="rounded" alt="">
                 </div>
               </div>
               <div class="col-md-8">
