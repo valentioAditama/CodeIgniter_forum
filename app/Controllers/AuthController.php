@@ -45,7 +45,7 @@ class AuthController extends BaseController
                 ]);
                 return redirect()->to('/home');
             } else{
-                session()->setFlashdata('error', 'username or password salah!');
+            session()->setFlashdata('error', 'username or password salah!');
                 return redirect()->back();
             }
         }else{

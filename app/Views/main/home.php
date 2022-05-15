@@ -15,6 +15,7 @@
   <!-- MDB -->
   <link rel="icon" href="<?=base_url()?>/chat.ico" type="image/gif">
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.11.0/mdb.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
   <title>Home</title>
 </head>
 
@@ -34,7 +35,7 @@
         <!-- Collapsible wrapper -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <!-- Navbar brand -->
-          <a class="navbar-brand mt-2 mt-lg-0" href="home.html">
+          <a class="navbar-brand mt-2 mt-lg-0" href="/home">
             <i class="fas fa-users"></i>
           </a>
           <!-- Left links -->
@@ -80,7 +81,8 @@
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
               <li>
-                  <a class="dropdown-item" href="<?php echo base_url('profile/edit/'. session()->get('id')) ?>">My profile</a>
+                <a class="dropdown-item" href="<?php echo base_url('profile/edit/'. session()->get('id')) ?>">My
+                  profile</a>
               </li>
               <!-- <li>
                 <a class="dropdown-item" href="account_settings.html">Settings</a>
@@ -94,7 +96,7 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <span class="navbar-text p-2">
                 Hi, <?php echo session()->get('fullname')?>
-              </span> 
+              </span>
             </ul>
           </div>
         </div>
@@ -109,37 +111,15 @@
       <div class="p-3">
         <div class="row">
           <div class="col-md-3 d-flex justify-content-end">
-            <img src="<?php echo base_url('assets/profile-default.gif')?>" height="100"
-              class="rounded-circle" alt="">
+            <img src="<?php echo base_url('assets/profile-default.gif')?>" height="100" class="rounded-circle" alt="">
           </div>
           <div class="col-md-6 d-flex align-items-center">
             <input type="text" class="form-control" placeholder="Any Ideas?" readonly>
           </div>
           <div class="col-md-3 d-flex align-items-center">
-            <button type="button" class="btn btn-success" data-mdb-toggle="modal" data-mdb-target="#createIdeas">
+            <a href="<?php echo base_url('uploadPostingan/'. session()->get('id'))?>" class="btn btn-success">
               Create here!
-            </button>
-            <!-- Modal -->
-            <div class="modal fade" id="createIdeas" tabindex="-1" aria-labelledby="exampleModalLabel"
-              aria-hidden="true">
-              <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Typing your ideas in here</h5>
-                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    <div id="editor">
-                      Type here
-                    </div>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Posting</button>
-                  </div>
-                </div>
-              </div>
-            </div>
+            </a>
           </div>
         </div>
       </div>
@@ -310,12 +290,5 @@
     </div>
   </section>
 </body>
-<script>
-  ClassicEditor
-    .create(document.querySelector('#editor'))
-    .catch(error => {
-      console.error(error);
-    });
-</script>
 
 </html>

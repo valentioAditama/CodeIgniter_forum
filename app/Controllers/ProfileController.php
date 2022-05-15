@@ -16,18 +16,7 @@ class ProfileController extends BaseController
 
         $this->session = session();
     }
-    public function index()
-    {
-        // Cek jika home tidak ada users maka akan dikembalikan lagi ke dalam login
-        if(!$this->session->has('Loggedin')){
-            return redirect()->to('/');
-        }
-
-        $users = new usersModel();
-        $data = $users->getUsers();
-        return view('main/home', compact('data'));
-    }
-
+    
     public function profile($id = null)
     {
         if(!$this->session->has('Loggedin')){
@@ -40,16 +29,16 @@ class ProfileController extends BaseController
                 $data['users'] = $query->getRow();
                 return view('main/profile', $data);
            }else{
-            //    throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+               throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
            }
         } else{
-            // throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
         }
     }
 
     public function update($id){
         if(!$this->session->has('Loggedin')){
-            // throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
         };
 
         $db = \Config\Database::connect();
