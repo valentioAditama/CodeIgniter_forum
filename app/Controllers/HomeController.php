@@ -22,8 +22,17 @@ class HomeController extends BaseController
             return redirect()->to('/');
         }
 
-        $users = new usersModel();
-        $data = $users->getUsers();
-        return view('main/home', compact('data'));
+        $db = \Config\Database::connect();
+        $builder = $db->table('users');
+        $builder->select('*');
+        $builder->join('postingan', 'postingan.id_users=users.id')->orderBy('postingan.id', 'DESC');
+        $query = $builder->get()->getResult();
+        $data['users'] = $query;
+
+        // $builder = $db->table('users');
+        // $query = $builder->get()->getResult();
+        // $data['users'] = $query;
+
+        return view('main/home', $data);
     }
 }

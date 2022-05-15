@@ -13,11 +13,8 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.11.0/mdb.min.css" rel="stylesheet" />
   <script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
   <!-- MDB -->
-  <link rel="icon" href="<?=base_url()?>/chat.ico" type="image/gif">
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.11.0/mdb.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-    crossorigin="anonymous"></script>
-  <title>Home</title>
+  <title><%= title %></title>
 </head>
 
 <body>
@@ -36,7 +33,7 @@
         <!-- Collapsible wrapper -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <!-- Navbar brand -->
-          <a class="navbar-brand mt-2 mt-lg-0" href="/home">
+          <a class="navbar-brand mt-2 mt-lg-0" href="home.html">
             <i class="fas fa-users"></i>
           </a>
           <!-- Left links -->
@@ -77,26 +74,25 @@
           <div class="dropdown">
             <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#" id="navbarDropdownMenuAvatar"
               role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-              <img src="<?php echo base_url('assets/profile-default.gif') ?>" class="rounded-circle" height="25"
+              <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle" height="25"
                 alt="Black and White Portrait of a Man" loading="lazy" />
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
               <li>
-                <a class="dropdown-item" href="<?php echo base_url('profile/edit/'. session()->get('id')) ?>">My
-                  profile</a>
+                <a class="dropdown-item" href="/profile">My profile</a>
               </li>
-              <!-- <li>
-                <a class="dropdown-item" href="account_settings.html">Settings</a>
-              </li> -->
               <li>
-                <a class="dropdown-item" href="<?php base_url();?>/logout">Logout</a>
+                <a class="dropdown-item" href="account_settings.html">Settings</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/logout">Logout</a>
               </li>
             </ul>
           </div>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <span class="navbar-text p-2">
-                Hi, <?php echo session()->get('fullname')?>
+                Hi, <%= email %>
               </span>
             </ul>
           </div>
@@ -112,15 +108,36 @@
       <div class="p-3">
         <div class="row">
           <div class="col-md-3 d-flex justify-content-end">
-            <img src="<?php echo base_url('assets/profile-default.gif')?>" height="100" class="rounded-circle" alt="">
+            <img src="/Assets/Assets/442008570_ARTIST_AVATAR_3D_400px.gif" height="100" class="rounded-circle" alt="">
           </div>
           <div class="col-md-6 d-flex align-items-center">
             <input type="text" class="form-control" placeholder="Any Ideas?" readonly>
           </div>
           <div class="col-md-3 d-flex align-items-center">
-            <a href="<?php echo base_url('uploadPostingan/'. session()->get('id'))?>" class="btn btn-success">
+            <button type="button" class="btn btn-success" data-mdb-toggle="modal" data-mdb-target="#createIdeas">
               Create here!
-            </a>
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" id="createIdeas" tabindex="-1" aria-labelledby="exampleModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Typing your ideas in here</h5>
+                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <div id="editor">
+                      Type here
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Posting</button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -132,21 +149,20 @@
           inventore et obcaecati minima error ratione ab amet excepturi aut aspernatur ea tempora sapiente,
           vel animi id.
         </div>
-        <div class="col-md-6 shadow-5 rounded-4">
-          <?php foreach ($users as $key => $value) : ?>
-            <div class="p-3 shadow-3-strong rounded-5 mb-3">
+        <div class="col-md-6 shadow-5 rounded-4 p-3">
+          <div class="p-3 shadow-3-strong rounded-4">
             <div class="row">
               <div class="col-md-2">
                 <div class="d-flex justify-content-end">
-                  <img src="<?php echo base_url('/assets/img_avatar.png')?>" height="75" class="rounded-circle" alt="">
+                  <img src="/Assets/Assets/img_avatar.png" height="75" class="rounded-circle" alt="">
                 </div>
               </div>
               <div class="col-md-8">
                 <div class="d-flex align-items-center">
                   <div class="d-flex flex-column">
-                    <div><b><?= $value->fullname ?></b><span> &#9737; </span><a href="#"><small>Follow</small></a></div>
+                    <div><b>Valentio Aditama</b><span> &#9737; </span><a href="#"><small>Follow</small></a></div>
                     <div>System Engineering</div>
-                    <div class="text-black-50"><small>- <?= $value->created_at ?></small></div>
+                    <div class="text-black-50"><small>- 9 Min</small></div>
                   </div>
                 </div>
               </div>
@@ -165,14 +181,18 @@
             </div>
             <div class="row">
               <div class="col-md-12 p-3">
-                <p><?= $value->postingan ?></p>
+                <p>Nah inilah akibat kurangnya membaca berita secara tuntas. Sirkuit Mandalika itu dibangun
+                  di atas lahan KEK(Kawasan Ekonomi Khusus) Mandalika. Pengelola KEK Mandalika itu adalah
+                  PT Pengembangan Pariwisata Indonesia (Persero).[1] Trus PT PPI itu gak Mendanai
+                  pembangunan Sirkuit, Pemerintah juga gak mendanai. Yang mendanai adalah Vinci
+                  Construction merupakan perusahaan konstruksi asal Perancis. Total dana yang
+                  digelontorkan adalah 6,5Trilyun. [2] [3]</p>
               </div>
               <div class="col-md-12 ">
-                <!-- <center>
-                  <img
-                    src="<?php echo base_url('assets/2022_1500_motogp_02_ina_mgp_day04_race_edit_hs.video_list_2x.jpg') ?>"
+                <center>
+                  <img src="/Assets/Assets/2022_1500_motogp_02_ina_mgp_day04_race_edit_hs.video_list_2x.jpg"
                     class="img-fluid hover-shadow" alt="">
-                </center> -->
+                </center>
                 <div class="row">
                   <div class="d-flex justify-content-between">
                     <div class="col-md-2">
@@ -201,7 +221,79 @@
               </div>
             </div>
           </div>
-          <?php endforeach; ?>
+          <div class="pt-3">
+            <div class="p-3 shadow-3-strong rounded-5">
+              <div class="row">
+                <div class="col-md-2">
+                  <div class="d-flex justify-content-end">
+                    <img src="/Assets/Assets/img_avatar.png" height="75" class="rounded-circle" alt="">
+                  </div>
+                </div>
+                <div class="col-md-8">
+                  <div class="d-flex align-items-center">
+                    <div class="d-flex flex-column">
+                      <div><b>Valentio Aditama</b><span> &#9737; </span><a href="#"><small>Follow</small></a></div>
+                      <div>System Engineering</div>
+                      <div class="text-black-50"><small>- 9 Min</small></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="d-flex justify-content-end">
+                    <div class="dropdown">
+                      <i class="fas fa-chevron-down" type="button" id="dropdownMenuButton" data-mdb-toggle="dropdown"
+                        aria-expanded="false">
+                      </i>
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <li><a class="dropdown-item" href="#">Delete</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 p-3">
+                  <p>Nah inilah akibat kurangnya membaca berita secara tuntas. Sirkuit Mandalika itu dibangun
+                    di atas lahan KEK(Kawasan Ekonomi Khusus) Mandalika. Pengelola KEK Mandalika itu adalah
+                    PT Pengembangan Pariwisata Indonesia (Persero).[1] Trus PT PPI itu gak Mendanai
+                    pembangunan Sirkuit, Pemerintah juga gak mendanai. Yang mendanai adalah Vinci
+                    Construction merupakan perusahaan konstruksi asal Perancis. Total dana yang
+                    digelontorkan adalah 6,5Trilyun. [2] [3]</p>
+                </div>
+                <div class="col-md-12 ">
+                  <center>
+                    <img src="/Assets/Assets/2022_1500_motogp_02_ina_mgp_day04_race_edit_hs.video_list_2x.jpg"
+                      class="img-fluid hover-shadow" alt="">
+                  </center>
+                  <div class="row">
+                    <div class="d-flex justify-content-between">
+                      <div class="col-md-2">
+                        <div class="p-3">
+                          <div class="d-flex justify-content-center align-items-center">
+                            <i class="far fa-thumbs-up fa-lg p-2"></i> Likes
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-2">
+                        <div class="p-3">
+                          <div class="d-flex justify-content-center align-items-center">
+                            <i class="far fa-comment fa-lg p-2"></i> Comment
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-2">
+                        <div class="p-3">
+                          <div class="d-flex justify-content-center align-items-center">
+                            <i class="fas fa-share fa-lg p-2"></i> Share
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="col-md-3">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi qui aut ipsam quasi eius, tempore,
@@ -209,8 +301,16 @@
           perspiciatis adipisci!
         </div>
       </div>
+
     </div>
   </section>
 </body>
+<script>
+  ClassicEditor
+    .create(document.querySelector('#editor'))
+    .catch(error => {
+      console.error(error);
+    });
+</script>
 
 </html>
