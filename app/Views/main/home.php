@@ -15,7 +15,8 @@
   <!-- MDB -->
   <link rel="icon" href="<?=base_url()?>/chat.ico" type="image/gif">
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.11.0/mdb.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
   <title>Home</title>
 </head>
 
@@ -131,20 +132,21 @@
           inventore et obcaecati minima error ratione ab amet excepturi aut aspernatur ea tempora sapiente,
           vel animi id.
         </div>
-        <div class="col-md-6 shadow-5 rounded-4 p-3">
-          <div class="p-3 shadow-3-strong rounded-4">
+        <div class="col-md-6 shadow-5 rounded-4">
+          <?php foreach ($users as $key => $value) : ?>
+            <div class="p-3 shadow-3-strong rounded-5 mb-3">
             <div class="row">
               <div class="col-md-2">
                 <div class="d-flex justify-content-end">
-                  <img src="<?php echo base_url('assets/img_avatar.png')?>" height="75" class="rounded-circle" alt="">
+                  <img src="<?php echo base_url('/assets/img_avatar.png')?>" height="75" class="rounded-circle" alt="">
                 </div>
               </div>
               <div class="col-md-8">
                 <div class="d-flex align-items-center">
                   <div class="d-flex flex-column">
-                    <div><b>Valentio Aditama</b><span> &#9737; </span><a href="#"><small>Follow</small></a></div>
+                    <div><b><?= $value->fullname ?></b><span> &#9737; </span><a href="#"><small>Follow</small></a></div>
                     <div>System Engineering</div>
-                    <div class="text-black-50"><small>- 9 Min</small></div>
+                    <div class="text-black-50"><small>- <?= $value->created_at ?></small></div>
                   </div>
                 </div>
               </div>
@@ -163,19 +165,14 @@
             </div>
             <div class="row">
               <div class="col-md-12 p-3">
-                <p>Nah inilah akibat kurangnya membaca berita secara tuntas. Sirkuit Mandalika itu dibangun
-                  di atas lahan KEK(Kawasan Ekonomi Khusus) Mandalika. Pengelola KEK Mandalika itu adalah
-                  PT Pengembangan Pariwisata Indonesia (Persero).[1] Trus PT PPI itu gak Mendanai
-                  pembangunan Sirkuit, Pemerintah juga gak mendanai. Yang mendanai adalah Vinci
-                  Construction merupakan perusahaan konstruksi asal Perancis. Total dana yang
-                  digelontorkan adalah 6,5Trilyun. [2] [3]</p>
+                <p><?= $value->postingan ?></p>
               </div>
               <div class="col-md-12 ">
-                <center>
+                <!-- <center>
                   <img
-                    src="<?php echo base_url('/assets/2022_1500_motogp_02_ina_mgp_day04_race_edit_hs.video_list_2x.jpg')?>"
+                    src="<?php echo base_url('assets/2022_1500_motogp_02_ina_mgp_day04_race_edit_hs.video_list_2x.jpg') ?>"
                     class="img-fluid hover-shadow" alt="">
-                </center>
+                </center> -->
                 <div class="row">
                   <div class="d-flex justify-content-between">
                     <div class="col-md-2">
@@ -204,81 +201,7 @@
               </div>
             </div>
           </div>
-          <div class="pt-3">
-            <div class="p-3 shadow-3-strong rounded-5">
-              <div class="row">
-                <div class="col-md-2">
-                  <div class="d-flex justify-content-end">
-                    <img src="<?php echo base_url('/assets/img_avatar.png')?>" height="75" class="rounded-circle"
-                      alt="">
-                  </div>
-                </div>
-                <div class="col-md-8">
-                  <div class="d-flex align-items-center">
-                    <div class="d-flex flex-column">
-                      <div><b>Valentio Aditama</b><span> &#9737; </span><a href="#"><small>Follow</small></a></div>
-                      <div>System Engineering</div>
-                      <div class="text-black-50"><small>- 9 Min</small></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-2">
-                  <div class="d-flex justify-content-end">
-                    <div class="dropdown">
-                      <i class="fas fa-chevron-down" type="button" id="dropdownMenuButton" data-mdb-toggle="dropdown"
-                        aria-expanded="false">
-                      </i>
-                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li><a class="dropdown-item" href="#">Delete</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-12 p-3">
-                  <p>Nah inilah akibat kurangnya membaca berita secara tuntas. Sirkuit Mandalika itu dibangun
-                    di atas lahan KEK(Kawasan Ekonomi Khusus) Mandalika. Pengelola KEK Mandalika itu adalah
-                    PT Pengembangan Pariwisata Indonesia (Persero).[1] Trus PT PPI itu gak Mendanai
-                    pembangunan Sirkuit, Pemerintah juga gak mendanai. Yang mendanai adalah Vinci
-                    Construction merupakan perusahaan konstruksi asal Perancis. Total dana yang
-                    digelontorkan adalah 6,5Trilyun. [2] [3]</p>
-                </div>
-                <div class="col-md-12 ">
-                  <center>
-                    <img
-                      src="<?php echo base_url('assets/2022_1500_motogp_02_ina_mgp_day04_race_edit_hs.video_list_2x.jpg') ?>"
-                      class="img-fluid hover-shadow" alt="">
-                  </center>
-                  <div class="row">
-                    <div class="d-flex justify-content-between">
-                      <div class="col-md-2">
-                        <div class="p-3">
-                          <div class="d-flex justify-content-center align-items-center">
-                            <i class="far fa-thumbs-up fa-lg p-2"></i> Likes
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-2">
-                        <div class="p-3">
-                          <div class="d-flex justify-content-center align-items-center">
-                            <i class="far fa-comment fa-lg p-2"></i> Comment
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-2">
-                        <div class="p-3">
-                          <div class="d-flex justify-content-center align-items-center">
-                            <i class="fas fa-share fa-lg p-2"></i> Share
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <?php endforeach; ?>
         </div>
         <div class="col-md-3">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi qui aut ipsam quasi eius, tempore,
@@ -286,7 +209,6 @@
           perspiciatis adipisci!
         </div>
       </div>
-
     </div>
   </section>
 </body>

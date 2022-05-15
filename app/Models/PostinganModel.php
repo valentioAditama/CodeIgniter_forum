@@ -10,8 +10,8 @@ class PostinganModel extends Model
     protected $primaryKey = 'id'; 
     protected $allowedFields = ['id_users', 'postingan'];
 
-    // public function savePostingan($data) {
-    //     $query = $this->db->table('postingan')->insert($data);
-    //     return $query;
-    // }
+    public function getPostingan(){
+        return $this->findAll();
+    }
+    
 }
