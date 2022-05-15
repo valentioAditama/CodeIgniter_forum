@@ -147,7 +147,7 @@
                     <div><b><?= $value->fullname ?></b><span> &#9737; </span><a href="#"><small>Follow</small></a></div>
                     <div>System Engineering</div>
                     <div class="text-black-50"><small>- <?= $value->created_at ?></small></div>
-                  </div>
+                  </div> 
                 </div>
               </div>
               <div class="col-md-2">
