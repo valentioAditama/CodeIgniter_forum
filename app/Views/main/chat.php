@@ -21,6 +21,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <link rel="icon" href="<?=base_url()?>/chat.ico" type="image/gif">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
     <!-- MDB -->
@@ -141,42 +142,6 @@
                                     <div class="status"> <i class="fa fa-circle offline"></i> left 7 mins ago </div>
                                 </div>
                             </li>
-                            <li class="clearfix active">
-                                <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="avatar">
-                                <div class="about">
-                                    <div class="name">Aiden Chavez</div>
-                                    <div class="status"> <i class="fa fa-circle online"></i> online </div>
-                                </div>
-                            </li>
-                            <li class="clearfix">
-                                <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="avatar">
-                                <div class="about">
-                                    <div class="name">Mike Thomas</div>
-                                    <div class="status"> <i class="fa fa-circle online"></i> online </div>
-                                </div>
-                            </li>
-                            <li class="clearfix">
-                                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="avatar">
-                                <div class="about">
-                                    <div class="name">Christian Kelly</div>
-                                    <div class="status"> <i class="fa fa-circle offline"></i> left 10 hours ago </div>
-                                </div>
-                            </li>
-                            <li class="clearfix">
-                                <img src="https://bootdey.com/img/Content/avatar/avatar8.png" alt="avatar">
-                                <div class="about">
-                                    <div class="name">Monica Ward</div>
-                                    <div class="status"> <i class="fa fa-circle online"></i> online </div>
-                                </div>
-                            </li>
-                            <li class="clearfix">
-                                <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="avatar">
-                                <div class="about">
-                                    <div class="name">Dean Henry</div>
-                                    <div class="status"> <i class="fa fa-circle offline"></i> offline since Oct 28
-                                    </div>
-                                </div>
-                            </li>
                         </ul>
                     </div>
                     <div class="chat">
@@ -230,10 +195,8 @@
                         </div>
                         <div class="chat-message clearfix">
                             <div class="input-group mb-0">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fa fa-send"></i></span>
-                                </div>
-                                <input type="text" class="form-control" placeholder="Enter text here...">
+                                <input type="text" class="form-control" id="pesan" placeholder="Enter text here...">
+                                <button class="btn btn-success d-inline" type="button" id="kirim" onclick="kirimPesan();">Kirim</button>
                             </div>
                         </div>
                     </div>
@@ -508,9 +471,34 @@
             }
         }
     </style>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 
-    <script type="text/javascript">
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyAdZetUkFA3GtDJ-kSx6Jy9iJJcqL_J8-M",
+            authDomain: "forum-ci4.firebaseapp.com",
+            projectId: "forum-ci4",
+            storageBucket: "forum-ci4.appspot.com",
+            messagingSenderId: "10412168844",
+            appId: "1:10412168844:web:0059ed2f1268e32dba0da9",
+            measurementId: "G-KJ5H1EHYP2"
+        };
 
+        firebase.initializeApp(firebaseConfig);
+
+        var database = firebase.database();
+
+        function kirimPesan() {
+            var pesan = document.getElementById('pesan');
+            
+        var gabungan = {
+            "pesan": pesan.value
+        }
+
+        database.ref('Pesan').push().set(gabungan);
+        pesan.value = '';
+        }
     </script>
 </body>
 
