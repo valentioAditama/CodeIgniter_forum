@@ -440,7 +440,6 @@
                                 <li class="clearfix">
                                     <div class="message-data text-right">
                                         <span class="message-data-time">10:10 AM, Today</span>
-                                        <img src="<?php echo base_url('uploads/'.session()->get('image_profile')) ?>" alt="avatar">
                                     </div>
                                     <div class="message other-message float-right"> Hi Aiden, how are you? How is the
                                         project coming along? </div>
@@ -454,7 +453,6 @@
                                 <li class="clearfix">
                                     <div class="message-data text-right">
                                         <span class="message-data-time">10:10 AM, Today</span>
-                                        <img src="<?php echo base_url('uploads/'.session()->get('image_profile')) ?>" alt="avatar">
                                     </div>
                                     <div class="message other-message float-right" id="showPesan"></div>
                                 </li>
@@ -496,7 +494,7 @@
         chatref.on('value', showData, showErr);
 
         function showData(items){
-            console.log(items.val());
+            console.log(items.val())
         }
 
         function showErr(err){
@@ -505,15 +503,15 @@
 
         function kirimPesan() {
             var pesan = document.getElementById('pesan');
-            
-        var gabungan = {
-            "pesan": pesan.value
-        }
+                    
+                var gabungan = {
+                    "pesan": pesan.value
+                }
 
-        database.ref('Pesan').push().set(gabungan);
-        document.getElementById('showPesan').innerHTML = pesan.value;
-        pesan.value = '';
-    }
+                database.ref('Pesan').push().set(gabungan);
+                document.getElementById('showPesan').innerHTML += pesan.val  + '<br>';
+                pesan.value = '';
+            }
     </script>
 </body>
 
