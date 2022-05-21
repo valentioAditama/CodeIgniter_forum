@@ -454,14 +454,16 @@
                                     <div class="message-data text-right">
                                         <span class="message-data-time">10:10 AM, Today</span>
                                     </div>
-                                    <div class="message other-message float-right" id="showPesan"></div>
+                                    <div class="message other-message float-right" id="messages"></div>
                                 </li>
                             </ul>
                         </div>
                         <div class="chat-message clearfix">
                             <div class="input-group mb-0">
-                                <input type="text" class="form-control" id="pesan" placeholder="Enter text here...">
-                                <button class="btn btn-success d-inline" type="button" id="kirim" onclick="kirimPesan();">Kirim</button>
+                                <form onsubmit="return sendMessage();">
+                                    <input type="text" class="form-control" id="message" placeholder="Enter text here...">
+                                    <button class="btn btn-success d-inline" type="submit">Kirim</button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -469,8 +471,6 @@
             </div>
         </div>
     </div>
-
-    
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 
@@ -486,33 +486,30 @@
         };
 
         firebase.initializeApp(firebaseConfig);
-
         var database = firebase.database();
+        var myname = prompt("enter your name?");
 
-        var chatref = database.ref('Pesan');
+        function sendMessage(){
+            var message = document.getElementById("message").value;
 
-        chatref.on('value', showData, showErr);
-
-        function showData(items){
-            console.log(items.val())
+            firebase.database().ref("messages").push().set({
+                "Sender": myname, 
+                "Messages": message
+            });
+            return false;
         }
 
-        function showErr(err){
-            console.log(err);
-        }
+        firebase.database().ref("messages").on("child_added", function (snapshot) {
+                var html = "";
+                html += "<li>";
+                    html += snapshot.val().Messages;
+                html += "</li>";
 
-        function kirimPesan() {
-            var pesan = document.getElementById('pesan');
-                    
-                var gabungan = {
-                    "pesan": pesan.value
-                }
-
-                database.ref('Pesan').push().set(gabungan);
-                document.getElementById('showPesan').innerHTML += pesan.val  + '<br>';
-                pesan.value = '';
-            }
+                document.getElementById("messages").innerHTML += html;
+                message.value = "";
+            });
     </script>
+    
 </body>
 
 </html>

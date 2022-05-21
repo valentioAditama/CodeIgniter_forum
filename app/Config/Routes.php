@@ -45,7 +45,8 @@ $routes->put('/uploadPostingan/process/(:any)', 'PostinganController::storePosti
 $routes->get('/explore', 'ExploreController::index');
 
 // chat 
-$routes->get('/chat', 'ChatController::index');
+$routes->get('chat', 'ChatController::index');
+$routes->put('chat/(:any)', 'ChatController::index/$1');
 
 // auth
 $routes->get('/logout', 'AuthController::logout');

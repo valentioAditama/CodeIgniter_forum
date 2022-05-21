@@ -48,7 +48,7 @@
               <a class="nav-link" href="/explore">Explore</a>
             </li>
             <li class="nav-item dropdown me-3 me-lg-1">
-              <a class="nav-link dropdown-toggle hidden-arrow" href="/chat" role="button">
+              <a class="nav-link dropdown-toggle hidden-arrow" href="<?php echo base_url('chat/'. session()->get('id')) ?>" role="button">
                 <i class="fas fa-comments fa-lg"></i>
                 <span class="badge rounded-pill badge-notification bg-danger">99+</span>
               </a>
