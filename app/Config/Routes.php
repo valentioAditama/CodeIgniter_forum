@@ -32,13 +32,23 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 
+// profile
 $routes->get('profile/edit/(:any)', 'ProfileController::profile/$1');
 $routes->put('profile/process/(:any)', 'ProfileController::update/$1');
 
+//home
 $routes->get('/home', 'HomeController::index');
 $routes->get('/uploadPostingan/(:any)', 'PostinganController::postingan/$1');
 $routes->put('/uploadPostingan/process/(:any)', 'PostinganController::storePostingan/$1');
 
+// explore
+$routes->get('/explore', 'ExploreController::index');
+
+// chat 
+$routes->get('chat', 'ChatController::index');
+$routes->put('chat/(:any)', 'ChatController::index/$1');
+
+// auth
 $routes->get('/logout', 'AuthController::logout');
 $routes->get('/', 'AuthController::login');
 $routes->post('/login/process', 'AuthController::loginStore');
