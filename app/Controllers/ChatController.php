@@ -11,7 +11,7 @@ class ChatController extends BaseController
     {
         $this->session = session();
 
-        $this->usersModel = new usersModel();
+        $this->userModel = new usersModel();
     }
 
     public function index($id = null)
